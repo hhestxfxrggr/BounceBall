@@ -13,14 +13,19 @@ public class PlayerGroundCheck : MonoBehaviour
     private void Start()
     {
         groundCheck = GameObject.Find("GroundCheck");
-        groundLayer = LayerMask.GetMask("Ground");
+        groundLayer = LayerMask.GetMask("Ground","BrokenBlock","Trap");
     }
-    public bool IsOnGround()
-    {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.transform.position, checkRadius, groundLayer);
-        Debug.Log("LayerMask °ª: " + groundLayer.value);
-        return isGrounded;
+    //public bool IsOnGround()
+    //{
+    //    isGrounded = Physics2D.OverlapCircle(groundCheck.transform.position, checkRadius, groundLayer); 
+    //    Debug.Log("LayerMask °ª: " + groundLayer.value);
+    //    return isGrounded;
 
+    //}
+    public Collider2D CheckForGroundHit()
+    {
+        if (groundCheck == null) return null;
+        return Physics2D.OverlapCircle(groundCheck.transform.position, checkRadius, groundLayer);
     }
 
     public void OnDrawGizmosSelected()

@@ -27,15 +27,10 @@ public class PlayerController : MonoBehaviour
 
     public void frame()
     {
-        if (PlayerGroundCheck.IsOnGround())
-        {
-            Jump();
-
-        }
         move(Input.GetAxisRaw("Horizontal"));
     }
 
-   private void Jump()
+   public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, Gravity);
     }
